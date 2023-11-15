@@ -35,7 +35,7 @@ class Ride
   end
 
   def reduce_visitor_spending_money(visitor) # helper method for board_rider
-    visitor.spending_money -= @admission_fee
+    visitor.reduce_spending_money(@admission_fee)
   end
 
   def board_rider(visitor)

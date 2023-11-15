@@ -32,4 +32,16 @@ RSpec.describe Visitor do
     expect(visitor1.tall_enough?(64)).to eq(false)
   end
 
+  it 'can reduce spending money' do
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+
+    visitor1.reduce_spending_money(2)
+
+    expect(visitor1.spending_money).to eq(8)
+
+    visitor1.reduce_spending_money(4)
+
+    expect(visitor1.spending_money).to eq(4)
+  end
+
 end
