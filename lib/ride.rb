@@ -16,7 +16,7 @@ class Ride
   end
 
   def total_revenue
-    total_times_ridden = @rider_log.values.sum { |times_ridden| times_ridden }
+    total_times_ridden = @rider_log.values.sum
     @total_revenue = @admission_fee * total_times_ridden
   end
 
@@ -27,11 +27,7 @@ class Ride
   end
 
   def add_visitor_to_rider_log(visitor) # helper method for board_rider
-    if @rider_log[visitor]
       @rider_log[visitor] += 1
-    else
-      @rider_log[visitor] = 1
-    end
   end
 
   def reduce_visitor_spending_money(visitor) # helper method for board_rider
@@ -39,9 +35,9 @@ class Ride
   end
 
   def board_rider(visitor)
-    add_visitor_to_rider_log(visitor) && 
-    reduce_visitor_spending_money(visitor) if
-    eligible?(visitor)
+    return if !eligible?(visitor)
+      add_visitor_to_rider_log(visitor) && 
+      reduce_visitor_spending_money(visitor)
   end
 
 end
